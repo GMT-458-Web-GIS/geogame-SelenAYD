@@ -21,7 +21,7 @@ Kullanıcıya Türkiye haritası üzerinde iki şehir gösterilir: bir başlang�
 - **Şehir Kontrolü**: Girilen şehrin, başlangıç ve hedef şehir arasında olup olmadığını kontrol eder.
 - **Puanlama Sistemi**: Her doğru tahmin için puan ekler ve puanı günceller.
 - **Yeni Oyun Başlatma**: Başka bir başlangıç ve hedef şehirle yeni bir oyun başlatır.
-- **Süre **: Oyunda 1 dakikalık süre içersinde en fazla ili tahmin edip en yüksek puana ulaşılması hedeflenmektedir.
+- **Süre**: Oyunda 1 dakikalık süre içersinde en fazla ili tahmin edip en yüksek puana ulaşılması hedeflenmektedir.
 
 
 ## Arayüz Yerleşimi
