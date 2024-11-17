@@ -36,6 +36,7 @@ Kullanıcıya Türkiye haritası üzerinde iki şehir gösterilir: bir başlang�
 
 - **OpenLayers**: Harita üzerinde şehirlerin doğru işaretlenmesi, etkileşimli harita görselleştirmesi ve kullanıcı etkileşimi için kullanılacaktır.
 
-![Ekran Alıntısı](https://github.com/user-attachments/assets/0edcf2b1-707e-4b19-b639-9d50603934c5)
+![tasarım_oyun](https://github.com/user-attachments/assets/965d780a-74cd-4a99-819f-62bca7256bad)
+
 
 
