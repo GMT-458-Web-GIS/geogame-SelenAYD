@@ -56,3 +56,17 @@ button:hover {
   color: #ff4d4d;
 }
 
+#timer-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #ff4d4d;
+  color: #1a1a1a;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 1000;
+}
+

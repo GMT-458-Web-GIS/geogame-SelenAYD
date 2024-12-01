@@ -169,6 +169,44 @@ function isBetweenCities(guessCity) {
   return distanceToStart + distanceToEnd <= totalDistance + tolerance;
 }
 
+function startTimer() {
+  timeLeft = 60;
+  document.getElementById("timer").textContent = timeLeft;
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").textContent = timeLeft;
+    
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      endGame();
+    }
+  }, 1000);
+}
+
+function endGame() {
+  document.getElementById("feedback").textContent = `Oyun bitti! Toplam puanınız: ${score}`;
+  document.getElementById("guess").disabled = true;
+  document.querySelectorAll("button").forEach(button => button.disabled = true);
+}
+
+function newGame() {
+  startCity = cities[Math.floor(Math.random() * cities.length)];
+  endCity = cities[Math.floor(Math.random() * cities.length)];
+
+  if (startCity.name === endCity.name) {
+    return newGame(); 
+  }
+
+  document.getElementById("start-city").textContent = startCity.name;
+  document.getElementById("end-city").textContent = endCity.name;
+  document.getElementById("score").textContent = score = 0;
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("guess").value = "";
+  document.getElementById("guess").disabled = false;
+  document.querySelectorAll("button").forEach(button => button.disabled = false);
+
+  startTimer(); // Zamanlayıcı başlatılıyor
+}
 
 
 newGame();
