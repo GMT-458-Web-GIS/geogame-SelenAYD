@@ -38,5 +38,5 @@ Kullanıcıya Türkiye haritası üzerinde iki şehir gösterilir: bir başlang�
 
 ![tasarım_oyun](https://github.com/user-attachments/assets/965d780a-74cd-4a99-819f-62bca7256bad)
 
-
+Oyun Linki = https://gmt-458-web-gis.github.io/geogame-SelenAYD/
 
