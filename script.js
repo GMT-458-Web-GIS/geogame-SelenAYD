@@ -7,12 +7,11 @@ const map = new ol.Map({
     })
   ],
   view: new ol.View({
-    center: ol.proj.fromLonLat([35.2433, 38.9637]), /* tr merkez coord */
+    center: ol.proj.fromLonLat([35.2433, 38.9637]), 
     zoom: 6
   })
 });
 
-/* şehirler */
 const cities = [
   { name: "Adana", coord: [35.3213, 37.0000] },
   { name: "Adıyaman", coord: [38.2786, 37.7648] },
@@ -97,8 +96,8 @@ const cities = [
   { name: "Düzce", coord: [31.1667, 40.8438] }
 ];
 
-let startCity, endCity, score = 0;
 
+let startCity, endCity, score = 0, timer, timeLeft = 60;
 
 function newGame() {
   startCity = cities[Math.floor(Math.random() * cities.length)];
@@ -113,6 +112,27 @@ function newGame() {
   document.getElementById("score").textContent = score = 0;
   document.getElementById("feedback").textContent = "";
   document.getElementById("guess").value = "";
+  document.getElementById("guess").disabled = false;
+  document.querySelectorAll(".game-info button").forEach(button => button.disabled = false);
+
+  startTimer();
+}
+
+// Zamanlayıcı
+function startTimer() {
+  clearInterval(timer);
+  timeLeft = 60;
+  document.getElementById("timer").textContent = timeLeft;
+
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      endGame();
+    }
+  }, 1000);
 }
 
 
@@ -169,45 +189,31 @@ function isBetweenCities(guessCity) {
   return distanceToStart + distanceToEnd <= totalDistance + tolerance;
 }
 
-function startTimer() {
-  timeLeft = 60;
-  document.getElementById("timer").textContent = timeLeft;
-  timer = setInterval(() => {
-    timeLeft--;
-    document.getElementById("timer").textContent = timeLeft;
-    
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      endGame();
-    }
-  }, 1000);
-}
-
 function endGame() {
+  clearInterval(timer); 
   document.getElementById("feedback").textContent = `Oyun bitti! Toplam puanınız: ${score}`;
   document.getElementById("guess").disabled = true;
-  document.querySelectorAll("button").forEach(button => button.disabled = true);
+  document.querySelectorAll(".game-info button").forEach(button => button.disabled = true);
+
+  
+  document.querySelectorAll(".game-info button").forEach(button => {
+    if (button.textContent === "Yeni Oyun") {
+      button.disabled = false; 
+    }
+  });
 }
 
-function newGame() {
-  startCity = cities[Math.floor(Math.random() * cities.length)];
-  endCity = cities[Math.floor(Math.random() * cities.length)];
 
-  if (startCity.name === endCity.name) {
-    return newGame(); 
-  }
+document.getElementById("start-button").addEventListener("click", () => {
+  document.getElementById("start-screen").classList.add("hidden");
+  document.getElementById("game-container").classList.remove("hidden");
+  document.getElementById("timer-container").classList.remove("hidden");
 
-  document.getElementById("start-city").textContent = startCity.name;
-  document.getElementById("end-city").textContent = endCity.name;
-  document.getElementById("score").textContent = score = 0;
-  document.getElementById("feedback").textContent = "";
-  document.getElementById("guess").value = "";
-  document.getElementById("guess").disabled = false;
-  document.querySelectorAll("button").forEach(button => button.disabled = false);
+  newGame();
+});
 
-  startTimer(); // Zamanlayıcı başlatılıyor
-}
-
+document.getElementById("game-container").classList.add("hidden");
+document.getElementById("timer-container").classList.add("hidden");
 
 newGame();
 
