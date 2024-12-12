@@ -1,41 +1,40 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ATV5e7Id)
-# Oyun Linki = https://gmt-458-web-gis.github.io/geogame-SelenAYD/
-# İki Şehir Arasında Bulunan İlleri Tahmin Etme Oyunu
+# Link of the Game = https://gmt-458-web-gis.github.io/geogame-SelenAYD/
+- # Guessing the Cities Located Between Two Cities Game
 
-Bu proje, Türkiye’deki iki şehir arasındaki en kısa yol üzerinde kalan şehirleri tahmin etmeye dayalı bir coğrafi oyundur. Oyuncular, başlangıç ve hedef şehir arasındaki illeri doğru tahmin ettikçe puan kazanır. Oyunun amacı, tüm şehirleri harita üzerinde doğru şekilde bulmaktır.
+This project is a geographic game based on guessing the cities on the shortest route between two cities in Turkey. Players earn points as they correctly guess the provinces between the starting and target cities. The aim of the game is to find all cities correctly on the map.
 
-## Proje Konsepti
+## Project Concept
 
-Kullanıcıya Türkiye haritası üzerinde iki şehir gösterilir: bir başlangıç ve bir hedef şehir. Oyuncu, bu iki şehir arasındaki güzergâhta bulunan şehirleri tahmin eder. Doğru tahmin edilen her şehir için oyuncuya puan verilir ve oyuncu tüm şehirleri doğru şekilde tahmin etmeye çalışır.
+The user is shown two cities on the map of Turkey: a starting and a target city. The player guesses the cities located on the route between these two cities. The player is given points for each city guessed correctly and the player tries to guess all cities correctly.
 
-## Gereksinimler
+## Requirements
 
-### Arayüz Gereksinimleri
+### Interface Requirements
 
-- **Harita**: Türkiye haritası üzerinde, başlangıç ve hedef şehir arasındaki şehirleri gösterir.
-- **Başlangıç ve Hedef Şehirler**: Rastgele seçilen iki şehrin isimleri ekranda görünür.
-- **Puan Göstergesi**: Kullanıcının doğru tahminleri sonucu topladığı puanı güncel olarak gösterir.
-- **Tahmin Girişi**: Kullanıcının tahmin ettiği şehri girebileceği bir alan ve "Tahmin Et" butonu.
+- **Map**: Shows the cities between the starting and target cities on the map of Turkey.
+- **Starting and Target Cities**: The names of two randomly selected cities appear on the screen.
+- **Score Indicator**: Shows the current score the user has collected as a result of correct guesses.
+- **Guess Entry**: A field where the user can enter the city they guess and a "Guess" button.
 
-### Fonksiyonel Gereksinimler
+### Functional Requirements
 
-- **Şehir Kontrolü**: Girilen şehrin, başlangıç ve hedef şehir arasında olup olmadığını kontrol eder.
-- **Puanlama Sistemi**: Her doğru tahmin için puan ekler ve puanı günceller.
-- **Yeni Oyun Başlatma**: Başka bir başlangıç ve hedef şehirle yeni bir oyun başlatır.
-- **Süre**: Oyunda 1 dakikalık süre içersinde en fazla ili tahmin edip en yüksek puana ulaşılması hedeflenmektedir.
+- **City Check**: Checks whether the entered city is between the starting and target cities.
+- **Scoring System**: Adds points for each correct guess and updates the score.
+- **Start New Game**: Starts a new game with another starting and target city.
+- **Duration**: The aim of the game is to guess the most cities within 1 minute and reach the highest score.
 
+## Interface Layout
 
-## Arayüz Yerleşimi
+- **Title**: The game title appears on the screen as "Guessing the Provinces Located Between Two Cities".
+- **Map**: A map of Turkey created with OpenLayers.
+- **Game Information**: Starting and target city information and the current score are displayed.
+- **Guess Entry**: An input field where the user can write their city guess and a "Guess" button.
+- **Time Screen**: The screen where the 1 minute time will be notified to the users. Therefore, the 1 minute counter will be on the screen.
 
-- **Başlık**: Oyun başlığı "İki Şehir Arasında Bulunan İlleri Tahmin Etme" olarak ekranda görünür.
-- **Harita**: OpenLayers ile oluşturulan Türkiye haritası.
-- **Oyun Bilgileri**: Başlangıç ve hedef şehir bilgileri ile güncel puan gösterilir.
-- **Tahmin Girişi**: Kullanıcının şehir tahminini yazabileceği giriş alanı ve "Tahmin Et" butonu.
-- **Süre Ekranı**: 1 dakikalık sürenin kullanıcılara bildirileceği ekran. Bu yüzden 1 dakikalık sayaç ekranda olacaktır.
+## Libraries to be Used
 
-## Kullanılacak Kütüphaneler
-
-- **OpenLayers**: Harita üzerinde şehirlerin doğru işaretlenmesi, etkileşimli harita görselleştirmesi ve kullanıcı etkileşimi için kullanılacaktır.
+- **OpenLayers**: It will be used for correct marking of cities on the map, interactive map visualization and user interaction.
 
 ![tasarım_oyun](https://github.com/user-attachments/assets/965d780a-74cd-4a99-819f-62bca7256bad)
 
@@ -53,14 +52,14 @@ When a city name is entered, the prediction is checked. If the city entered is a
 
 ## Closure
 
-### 1.Zamanlayıcı ile Closure (startTimer, setInterval)
-startTimer fonksiyonu, her saniye kalan süreyi güncellemek için setInterval kullanır. setInterval işlevi, dıştaki startTimer fonksiyonunda tanımlanan timeLeft değişkenine erişerek zamanı kontrol eder. Bu yapı, closure kullanılarak değişkenlere güvenli erişim sağlar.
+### 1. Closure with Timer (startTimer, setInterval)
+The startTimer function uses setInterval to update the remaining time every second. The setInterval function controls the time by accessing the timeLeft variable defined in the outer startTimer function. This structure provides secure access to variables using closures.
 
-### 2.Puan Takibi ile Closure (makeGuess, score)
-makeGuess fonksiyonu, oyundaki score değişkenini günceller. score, sadece makeGuess fonksiyonu tarafından kontrol edilir ve değiştirilebilir. Bu closure, puanın yalnızca belirli koşullarda güncellenmesini sağlar.
+### 2. Closure with Score Tracking (makeGuess, score)
+The makeGuess function updates the score variable in the game. The score is controlled and can only be changed by the makeGuess function. This closure ensures that the score is updated only under certain conditions.
 
-### 3.Tahmin Aralığı Kontrolü ile Closure (isBetweenCities, haversineDistance)
-isBetweenCities fonksiyonu, iki şehir arasındaki tahminleri doğrulamak için haversineDistance işlevini kullanır. haversineDistance, dış fonksiyondaki startCity ve endCity koordinatlarına erişir. Bu yapı, closure ile dıştaki verilere ulaşarak karmaşık hesaplamalar yapılmasını sağlar.
+### 3. Closure with Prediction Range Control (isBetweenCities, haversineDistance)
+The isBetweenCities function uses haversineDistance to verify the predictions between two cities. haversineDistance accesses the startCity and endCity coordinates in the outer function. This structure allows complex calculations to be performed by accessing the outer data with closures.
 
 ## Interaction with the DOM 
 
