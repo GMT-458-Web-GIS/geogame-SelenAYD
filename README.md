@@ -1,5 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ATV5e7Id)
 # Link of the Game = https://gmt-458-web-gis.github.io/geogame-SelenAYD/
+# Link of the ChatGPT Chat = https://chatgpt.com/share/675b1efd-5270-800b-953c-be37964496fd
 - # Guessing the Cities Located Between Two Cities Game
 
 This project is a geographic game based on guessing the cities on the shortest route between two cities in Turkey. Players earn points as they correctly guess the provinces between the starting and target cities. The aim of the game is to find all cities correctly on the map.
